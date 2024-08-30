@@ -3,99 +3,450 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ajay Baskaran - Portfolio</title>
+    <title>Ajay Baskaran Portfolio</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        /* Global Styles */
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
             background-color: #f4f4f4;
             color: #333;
         }
-        .container {
+
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            background-color: #333;
+            color: #fff;
+        }
+
+        .navbar h2 {
+            margin-left: 1rem;
+        }
+
+        .navbar__ul {
+            list-style: none;
+            display: flex;
+        }
+
+        .navbar__ul li {
+            margin: 0 1rem;
+        }
+
+        .navbar__ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .darkmode {
+            background: none;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            padding: 3rem 0;
+            background-color: #5D6D7E;
+            color: #fff;
+        }
+
+        header img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid #fff;
+        }
+
+        .header__text {
+            margin-top: 2rem;
+            font-size: 1.2rem;
             width: 80%;
-            margin: 50px auto;
-            background: #fff;
-            padding: 20px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+
+        /* Portfolio */
+        .portfolio {
+            padding: 2rem;
+        }
+
+        .portfolio__header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .portfolio__container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .card {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin: 1rem;
+            padding: 1rem;
+            width: 300px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        h1, h2, h3 {
-            color: #333;
+
+        .card img {
+            width: 100%;
+            height: 150px;
+            object-fit: contain;
+            margin-bottom: 1rem;
         }
-        .contact-info {
-            margin-bottom: 20px;
+
+        .card h2 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
         }
-        .contact-info p {
-            margin: 5px 0;
+
+        .card p {
+            font-size: 1rem;
+            line-height: 1.4;
         }
-        .section {
-            margin-bottom: 30px;
+
+        /* Skills */
+        .skills {
+            padding: 2rem;
+            background-color: #eaeaea;
         }
-        .section h2 {
-            border-bottom: 2px solid #ddd;
-            padding-bottom: 10px;
+
+        .skills h2 {
+            text-align: center;
+            margin-bottom: 2rem;
         }
-        .section p {
-            margin: 10px 0;
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .skills__item {
+            width: 120px;
+            text-align: center;
+            margin: 1rem;
+        }
+
+        .skills__item img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            margin-bottom: 0.5rem;
+        }
+
+        .skills__item p {
+            font-size: 1rem;
+        }
+
+        /* Experience */
+        .experience {
+            padding: 2rem;
+        }
+
+        .experience h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .experience__container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .experience__item {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            width: 60%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .experience__item h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience__item p {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+
+        .experience__item ul {
+            list-style: disc;
+            margin-left: 2rem;
+        }
+
+        /* Education */
+        .education {
+            padding: 2rem;
+            background-color: #eaeaea;
+        }
+
+        .education h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .education__container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .education__item {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            width: 60%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .education__item h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .education__item p {
+            font-size: 1rem;
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            padding: 2rem;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+        }
+
+        footer h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        footer p {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer__nav-hr {
+            border: 1px solid #444;
+            margin: 2rem 0;
+        }
+
+        .footer__nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .footer__nav h3 {
+            font-size: 1.2rem;
+        }
+
+        .footer__nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .footer__nav-links li {
+            margin: 0 1rem;
+        }
+
+        .footer__nav-links li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .to-top a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        @media(max-width: 768px) {
+            .experience__item, .education__item {
+                width: 90%;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Ajay Baskaran</h1>
-        <div class="contact-info">
-            <p><strong>Location:</strong> Perambalur, Tamil Nadu, India</p>
-            <p><strong>Phone:</strong> +91 95669 06532</p>
-            <p><strong>Email:</strong> <a href="mailto:ajaybas141@gmail.com">ajaybas141@gmail.com</a></p>
-            <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/ajay-baskaran-a056a6234" target="_blank">Ajay Baskaran</a></p>
+    <div class='wrapper'>
+        <div class="container">
+            <header id="home">
+                <nav class="navbar">
+                    <h2 class='name'>Ajay Baskaran</h2>
+                    <ul class="navbar__ul">
+                        <li class='link'><a href="#portfolio">Projects</a></li>
+                        <li class='link'><a href="#skills">Skills</a></li>
+                        <li class='link'><a href="#experience">Experience</a></li>
+                        <li class='link'><a href="#education">Education</a></li>
+                        <li class='link'><a href="#contact">Contact</a></li>
+                        <li>
+                            <!-- Dark Theme Toggle  -->
+                            <button class='darkmode'><i class="fas fa-moon"></i></button>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="header__container">
+                    <img src="https://avatars.githubusercontent.com/u/88958992?v=4" alt="profile-image">
+                    <div class="header__text__container">
+                        <p class="header__text">Hi! I am Ajay Baskaran, a B.Tech graduate in Information Technology with a strong foundation in Python, AI-ML, and Generative AI. I am passionate about leveraging cutting-edge technologies to develop innovative software solutions.</p>
+                    </div>
+                </div>
+            </header>
         </div>
 
-        <div class="section">
-            <h2>About Me</h2>
-            <p>I am a B.Tech graduate in Information Technology with a strong foundation in Python, AI-ML, and Generative AI. I am passionate about leveraging cutting-edge technologies to develop innovative software solutions. My experience includes working with various tools and technologies, including GitHub, OpenAI, and Hugging Face, to build functional and efficient applications.</p>
-        </div>
+        <main class="portfolio" id='portfolio'>
+            <h2 class='portfolio__header'>Projects</h2>
+            <div class="portfolio__container">
+                <article class='card'>
+                    <img src='https://cdn-icons-png.flaticon.com/512/3437/3437297.png' alt="project">
+                    <div class="text-container">
+                        <h2>Function Calling with AI using API Calls</h2>
+                        <p>Developed an API that enables AI models to generate JSON objects containing the arguments needed for function execution.</p>
+                    </div>
+                </article>
 
-        <div class="section">
-            <h2>Experience</h2>
-            <h3>AI/ML Intern, F22 Labs</h3>
-            <p><em>February 2024 – August 2024</em></p>
-            <ul>
-                <li>Analyzed experimental outcomes and model predictions to provide actionable insights.</li>
-                <li>Developed clean, reliable, and scalable code for AI/ML applications.</li>
-                <li>Optimized application performance through rigorous testing and debugging.</li>
-                <li>Adapted to new responsibilities as needed to support the team.</li>
-            </ul>
-        </div>
+                <article class='card'>
+                    <img src='https://cdn-icons-png.flaticon.com/512/993/993725.png' alt="project">
+                    <div class="text-container">
+                        <h2>Open-source LLM Models using FastAPI</h2>
+                        <p>Built and deployed several NLP tasks like transcription, translation, text generation, and sentiment analysis using FastAPI and open-source LLM models.</p>
+                    </div>
+                </article>
 
-        <div class="section">
-            <h2>Skills</h2>
-            <ul>
-                <li><strong>Programming Languages:</strong> Python, C (Basics)</li>
-                <li><strong>Tools and Technologies:</strong> GitHub, Artificial Intelligence, OpenAI, Transformers, LLM, Gradio, Hugging Face</li>
-                <li><strong>Other Skills:</strong> Problem-Solving, Team Collaboration</li>
-            </ul>
-        </div>
+                <article class='card'>
+                    <img src='https://cdn-icons-png.flaticon.com/512/1055/1055645.png' alt="project">
+                    <div class="text-container">
+                        <h2>Retrieval-Augmented Generation (RAG) Model</h2>
+                        <p>Implemented a RAG model that combines retrieval techniques with generative transformers to enhance NLP tasks.</p>
+                    </div>
+                </article>
+            </div>
 
-        <div class="section">
-            <h2>Projects</h2>
-            <h3>Function Calling with AI using API Calls</h3>
-            <p>Developed an API that enables AI models to generate JSON objects containing the arguments needed for function execution. This project showcased the intelligent selection and handling of API calls for various tasks such as calendar management and GitHub integration.</p>
+            <section class='skills' id='skills'>
+                <h2>Skills</h2>
+                <article class="skills-container">
+                    <div class="skills__item" data-aos='fade-up'>
+                        <img src="https://cdn-icons-png.flaticon.com/512/1199/1199124.png" alt="JS">
+                        <p>Python</p>
+                    </div>
 
-            <h3>Open-source LLM Models using FastAPI</h3>
-            <p>Built and deployed several natural language processing tasks like transcription, translation, text generation, sentiment analysis, and SQL query execution using FastAPI and open-source LLM models.</p>
+                    <div class="skills__item" data-aos='fade-up'>
+                        <img src="https://cdn-icons-png.flaticon.com/512/1051/1051277.png" alt="HTML5">
+                        <p>C (Basics)</p>
+                    </div>
 
-            <h3>Retrieval-Augmented Generation (RAG) Model</h3>
-            <p>Implemented a RAG model that combines retrieval techniques with generative transformers to enhance natural language processing tasks. The project improved the accuracy and relevance of outputs, particularly for tasks requiring up-to-date and specific information.</p>
-        </div>
+                    <div class="skills__item" data-aos='fade-up'>
+                        <img src="https://cdn-icons-png.flaticon.com/512/732/732190.png" alt="CSS">
+                        <p>Artificial Intelligence</p>
+                    </div>
 
-        <div class="section">
-            <h2>Education</h2>
-            <ul>
-                <li><strong>B.Tech in Information Technology</strong>, Anand Institute of Higher Technology, 2020 – 2024 (CGPA: 8.0)</li>
-                <li><strong>Higher Secondary</strong>, Bharathi Vidhyalaya Matric HR Sec School, 2018 – 2020 (Percentage: 65%)</li>
-                <li><strong>SSLC</strong>, Bharathi Vidhyalaya Matric HR Sec School, 2017 – 2018 (Percentage: 93%)</li>
-            </ul>
-        </div>
+                    <div class="skills__item" data-aos='fade-up'>
+                        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png" alt="Figma">
+                        <p>OpenAI</p>
+                    </div>
+
+                    <div class="skills__item" data-aos='fade-up'>
+                        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968559.png" alt="GitHub">
+                        <p>GitHub</p>
+                    </div>
+
+                    <div class="skills__item" data-aos='fade-up'>
+                        <img src="https://cdn-icons-png.flaticon.com/512/3545/3545450.png" alt="Gradio">
+                        <p>Gradio</p>
+                    </div>
+                </article>
+            </section>
+
+            <section class='experience' id='experience'>
+                <h2>Experience</h2>
+                <div class="experience__container">
+                    <div class="experience__item">
+                        <h3>AI/ML Intern, F22 Labs</h3>
+                        <p>February 2024 – August 2024</p>
+                        <ul>
+                            <li>Analyzed experimental outcomes and model predictions to provide actionable insights.</li>
+                            <li>Developed clean, reliable, and scalable code for AI/ML applications.</li>
+                            <li>Optimized application performance through rigorous testing and debugging.</li>
+                            <li>Adapted to new responsibilities as needed to support the team.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class='education' id='education'>
+                <h2>Education</h2>
+                <div class="education__container">
+                    <div class="education__item">
+                        <h3>B.Tech in Information Technology</h3>
+                        <p>Anand Institute of Higher Technology, 2020 – 2024 (CGPA: 8.0)</p>
+                    </div>
+                    <div class="education__item">
+                        <h3>Higher Secondary</h3>
+                        <p>Bharathi Vidhyalaya Matric HR Sec School, 2018 – 2020 (Percentage: 65%)</p>
+                    </div>
+                    <div class="education__item">
+                        <h3>SSLC</h3>
+                        <p>Bharathi Vidhyalaya Matric HR Sec School, 2017 – 2018 (Percentage: 93%)</p>
+                    </div>
+                </div>
+            </section>
+
+            <footer>
+                <div class="wrapper">
+                    <div class="footer__text-container" id='contact'>
+                        <h2>Contact</h2>
+                        <p>Let's connect if you want to collaborate...</p>
+                        <p><span class='phone'>Phone:</span> <strong>+91 95669 06532</strong></p>
+                        <p><span class='email'>Email:</span> <strong>ajaybas141@gmail.com</strong></p>
+                        <p><span class='linkedin'>LinkedIn:</span> <strong>Ajay Baskaran</strong></p>
+                    </div>
+                </div>
+                <hr class='footer__nav-hr'>
+                <nav class="footer__nav">
+                    <h3>Ajay Baskaran</h3>
+                    <ul class='footer__nav-links'>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#portfolio">Projects</a></li>
+                    </ul>
+                    <p class='to-top'><a href="#top"><strong>BACK TO TOP</strong></a></p>
+                </nav>
+            </footer>
+        </main>
     </div>
+
+    <script>
+        document.querySelector('.darkmode').addEventListener('click', () => {
+            document.body.classList.toggle('dark-theme');
+        });
+    </script>
 </body>
 </html>
